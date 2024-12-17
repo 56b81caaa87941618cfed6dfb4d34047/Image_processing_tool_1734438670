@@ -1,0 +1,23 @@
+{
+    "name": "example",
+    "prefix": "%#PLACEHOLDER",
+    "placeholderMappings": {
+        "Header": [
+            "APPLICATION_NAME"
+        ],
+        "Hero": [
+            "HERO_HEADING_TEXT",
+            "HERO_SUBHEADING_TEXT"
+        ],
+        "Footer": [
+            "APPLICATION_NAME",
+            "FOOTER_TEXT"
+        ]
+    },
+    "placeholders": {
+        "APPLICATION_NAME": "PixelPro",
+        "HERO_HEADING_TEXT": "Transform Your Images with Powerful Processing",
+        "HERO_SUBHEADING_TEXT": "Edit, enhance, and optimize your photos with our intuitive image processing tool. From basic adjustments to advanced filters, PixelPro has everything you need to create stunning visuals.",
+        "FOOTER_TEXT": "\u00a9 2023 PixelPro. Elevate your imagery with precision and creativity."
+    }
+}
