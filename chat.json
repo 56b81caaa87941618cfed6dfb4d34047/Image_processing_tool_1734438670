@@ -194,5 +194,13 @@
         "source": "smart_contract_assistant",
         "content": "I have successfully updated the staking smart contract to only accept ETH. Would you like to deploy it now?",
         "metadata": {}
+    },
+    {
+        "id": "492ed379-2786-4c3a-b643-27abe2ea4427",
+        "timestamp": "2024-12-18T10:03:12.328609Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "generate a miniting sc that allows me to mint my token with the supply I tell them from the frontend and withdraw it",
+        "metadata": {}
     }
 ]
