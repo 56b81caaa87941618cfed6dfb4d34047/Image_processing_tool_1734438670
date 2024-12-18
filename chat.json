@@ -129,5 +129,13 @@
         "source": "smart_contract_assistant",
         "content": "I have successfully generated the token minting smart contract. Would you like to deploy it now?",
         "metadata": {}
+    },
+    {
+        "id": "2262799a-d7ca-4a5b-a727-04256f40092a",
+        "timestamp": "2024-12-18T09:51:30.722169Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "generate a staking sc",
+        "metadata": {}
     }
 ]
