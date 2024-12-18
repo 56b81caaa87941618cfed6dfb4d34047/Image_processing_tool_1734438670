@@ -1218,5 +1218,15 @@
         "source": "base_assistant",
         "content": "I have fixed the code in the header component to ensure it correctly specifies all required parameters for the `addBeneficiary` function. You can now use the form to specify the address to send, start time, cliff vesting time, allocation in total tokens, and token address to send. Is there anything else you need assistance with?",
         "metadata": {}
+    },
+    {
+        "id": "041e0c90-7f89-4eb4-9c7d-93a1cad7206b",
+        "timestamp": "2024-12-18T11:20:54.275825Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "add some gas limit to the transaction",
+        "metadata": {
+            "component_id": "Header1734438674"
+        }
     }
 ]
