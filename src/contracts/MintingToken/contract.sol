@@ -10,7 +10,7 @@ contract MintingToken is ERC20, Ownable {
     string private _symbol;
 
     event TokenNameSet(string newName);
-    event TokenSupplySet(uint256 newSupply);
+    event TokensMinted(address to, uint256 amount);
     event TokensWithdrawn(address to, uint256 amount);
 
     constructor() ERC20("MintingToken", "MTK") Ownable() {
@@ -24,19 +24,16 @@ contract MintingToken is ERC20, Ownable {
         emit TokenNameSet(newName);
     }
 
-    function setTokenSupply(uint256 newSupply) external onlyOwner {
-        require(newSupply >= totalSupply(), "New supply must be greater than or equal to current supply");
-        uint256 additionalSupply = newSupply - totalSupply();
-        if (additionalSupply > 0) {
-            _mint(address(this), additionalSupply);
-        }
-        emit TokenSupplySet(newSupply);
+    function mintTokens(address to, uint256 amount) external onlyOwner {
+        require(to != address(0), "Cannot mint to zero address");
+        _mint(to, amount);
+        emit TokensMinted(to, amount);
     }
 
     function withdrawTokens(address to, uint256 amount) external onlyOwner {
         require(to != address(0), "Cannot withdraw to zero address");
-        require(amount <= balanceOf(address(this)), "Insufficient balance in contract");
-        _transfer(address(this), to, amount);
+        require(amount <= balanceOf(msg.sender), "Insufficient balance");
+        _transfer(msg.sender, to, amount);
         emit TokensWithdrawn(to, amount);
     }
 
