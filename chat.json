@@ -1457,5 +1457,13 @@
         "metadata": {
             "tool_call_id": "call_wAZ1159xCT8I65sJXz5MfQ69"
         }
+    },
+    {
+        "id": "48228b82-1e71-4618-8f64-07b10721baf2",
+        "timestamp": "2024-12-18T15:11:39.979916Z",
+        "role": "assistant",
+        "source": "smart_contract_assistant",
+        "content": "The staking smart contract has been successfully deployed. Is there anything specific you would like to do with the frontend or any other assistance you need?",
+        "metadata": {}
     }
 ]
