@@ -988,5 +988,13 @@
         "source": "web_client",
         "content": "change the background color of the whole mini app to have an image of \"freedom\"",
         "metadata": {}
+    },
+    {
+        "id": "29e588fe-52b4-4b7c-9cf9-3435245c3b98",
+        "timestamp": "2024-12-18T10:52:07.269330Z",
+        "role": "assistant",
+        "source": "base_assistant",
+        "content": "To change the background image of the entire mini app, you'll need to upload the \"freedom\" image to the app's assets and then apply it as the background for the whole app. Since you can upload images, you can proceed from there.",
+        "metadata": {}
     }
 ]
