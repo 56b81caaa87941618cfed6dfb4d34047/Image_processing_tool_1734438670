@@ -1320,5 +1320,15 @@
         "source": "base_assistant",
         "content": "I have successfully created a new frontend for the MintingToken smart contract in the footer. You can now set the token name, symbol, mint tokens with a specified supply, and withdraw tokens directly from the footer. Is there anything else you need assistance with?",
         "metadata": {}
+    },
+    {
+        "id": "4378587d-2312-45f5-a6d2-51fc8da16c7a",
+        "timestamp": "2024-12-18T15:10:21.336268Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "deply it firts",
+        "metadata": {
+            "component_id": "Hero1734438674"
+        }
     }
 ]
