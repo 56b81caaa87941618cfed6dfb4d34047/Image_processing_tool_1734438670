@@ -521,5 +521,13 @@
             },
             "type": "function"
         }
+    },
+    {
+        "id": "37cc7e2c-6a1d-47e0-96b8-6f25de2010da",
+        "timestamp": "2024-12-18T10:13:23.900754Z",
+        "role": "assistant",
+        "source": "tool:WriteOrEditSmartContract",
+        "content": "Okay, I'm generating the vesting distribution smart contract...",
+        "metadata": {}
     }
 ]
