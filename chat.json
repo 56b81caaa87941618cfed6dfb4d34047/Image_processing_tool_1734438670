@@ -14,5 +14,20 @@
         "source": "web_client",
         "content": "generate a sc for staking",
         "metadata": {}
+    },
+    {
+        "id": "e784627e-176b-46ba-89e2-8e732dbb3d5f",
+        "timestamp": "2024-12-18T07:50:59.347709Z",
+        "role": "tool_call",
+        "source": "base_assistant",
+        "content": null,
+        "metadata": {
+            "id": "call_QlDMEztz0ZB2b2IxWhfSau4L",
+            "function": {
+                "arguments": "{}",
+                "name": "TransferToSmartContractAssistant"
+            },
+            "type": "function"
+        }
     }
 ]
