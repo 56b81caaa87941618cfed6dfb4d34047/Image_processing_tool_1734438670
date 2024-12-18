@@ -1218,5 +1218,56 @@
         "source": "base_assistant",
         "content": "I have fixed the code in the header component to ensure it correctly specifies all required parameters for the `addBeneficiary` function. You can now use the form to specify the address to send, start time, cliff vesting time, allocation in total tokens, and token address to send. Is there anything else you need assistance with?",
         "metadata": {}
+    },
+    {
+        "id": "041e0c90-7f89-4eb4-9c7d-93a1cad7206b",
+        "timestamp": "2024-12-18T11:20:54.275825Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "add some gas limit to the transaction",
+        "metadata": {
+            "component_id": "Header1734438674"
+        }
+    },
+    {
+        "id": "78a174f7-38e0-4b8e-9e89-bb60fb0fc92c",
+        "timestamp": "2024-12-18T11:20:58.022615Z",
+        "role": "tool_call",
+        "source": "base_assistant",
+        "content": null,
+        "metadata": {
+            "id": "call_FikHHso2euLpks418prU0hMh",
+            "function": {
+                "arguments": "{\"component_id\": \"Header1734438674\", \"sc_address\": \"0x4a7A199EA12F7d963E5142B60B6BDE20D14130CC\", \"chain_id\": \"HOLESKY\", \"change_description\": \"Add a gas limit to the transactions within the header component.\", \"acknowledgement_message\": \"Okay, I'm adding a gas limit to the transactions...\"}",
+                "name": "EditSmartContractFrontendComponent"
+            },
+            "type": "function"
+        }
+    },
+    {
+        "id": "a2728bc2-27e8-49d5-8814-4ea681f67343",
+        "timestamp": "2024-12-18T11:20:58.079137Z",
+        "role": "assistant",
+        "source": "tool:edit_smart_contract_frontend_component",
+        "content": "Okay, I'm adding a gas limit to the transactions...",
+        "metadata": {}
+    },
+    {
+        "id": "9ff051bb-b286-48f3-bd9a-cae09c06fef6",
+        "timestamp": "2024-12-18T11:21:21.667195Z",
+        "role": "tool_result",
+        "source": "EditSmartContractFrontendComponent",
+        "content": "Success: \nI have successfully updated the VestingForm component to include a gas limit for the transaction. Here's a summary of the changes:\n\n1. Added a new state variable `gasLimit` to store the user-inputted gas limit.\n2. Created a new input field for the gas limit in the form.\n3. Modified the `handleSubmit` function to include the gas limit in the transaction options when calling the contract function.\n\nThe component now allows users to specify a gas limit for their transaction, which can help prevent out-of-gas errors and provide more control over transaction costs.\n\nPlease note that users should be cautious when setting the gas limit manually. If set too low, the transaction might fail, and if set too high, they might overpay for gas. It's generally recommended to let the wallet estimate the gas limit automatically, but this addition provides more flexibility for advanced users.\n",
+        "metadata": {
+            "tool_call_id": "call_FikHHso2euLpks418prU0hMh"
+        }
+    },
+    {
+        "id": "4fc4f79d-fcfb-4f52-b434-2cf0edf21e96",
+        "timestamp": "2024-12-18T11:21:23.683258Z",
+        "role": "assistant",
+        "source": "base_assistant",
+        "content": "I have added a gas limit to the transactions within the header component. You can now specify a gas limit for your transactions. Is there anything else you need assistance with?",
+        "metadata": {}
     }
 ]

@@ -8,6 +8,7 @@ const VestingForm: React.FC = () => {
   const [cliffDuration, setCliffDuration] = React.useState('');
   const [vestingDuration, setVestingDuration] = React.useState('');
   const [allocation, setAllocation] = React.useState('');
+  const [gasLimit, setGasLimit] = React.useState('');
   const [status, setStatus] = React.useState('');
   const [error, setError] = React.useState('');
 
@@ -58,7 +59,8 @@ const VestingForm: React.FC = () => {
         totalAmount,
         startTimeUnix,
         cliffDurationSeconds,
-        vestingDurationSeconds
+        vestingDurationSeconds,
+        { gasLimit: ethers.BigNumber.from(gasLimit) }
       );
 
       setStatus('Transaction sent. Waiting for confirmation...');
@@ -121,6 +123,17 @@ const VestingForm: React.FC = () => {
             onChange={(e) => setAllocation(e.target.value)}
             className="w-full p-2 border rounded"
             required
+          />
+        </div>
+        <div>
+          <label className="block mb-1">Gas Limit:</label>
+          <input
+            type="number"
+            value={gasLimit}
+            onChange={(e) => setGasLimit(e.target.value)}
+            className="w-full p-2 border rounded"
+            required
+            placeholder="Enter gas limit (e.g., 200000)"
           />
         </div>
         <button type="submit" className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
