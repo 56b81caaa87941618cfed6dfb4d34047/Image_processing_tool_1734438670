@@ -529,5 +529,15 @@
         "source": "tool:WriteOrEditSmartContract",
         "content": "Okay, I'm generating the vesting distribution smart contract...",
         "metadata": {}
+    },
+    {
+        "id": "5abb33cf-5272-442c-87fd-77a3fda957ad",
+        "timestamp": "2024-12-18T10:13:43.257409Z",
+        "role": "tool_result",
+        "source": "WriteOrEditSmartContract",
+        "content": "\nI have implemented the VestingDistributor contract according to your specifications. Here's a summary of the main features:\n\n1. The contract allows the owner to add beneficiaries with custom vesting schedules.\n2. Tokens are distributed directly from the owner's wallet when released.\n3. The contract implements a linear vesting schedule with a cliff period.\n4. Functions are provided to release vested tokens and check vested amounts.\n\nCaveats and assumptions:\n1. The contract is initialized with a placeholder token address. You should call the `setToken` function after deployment to set the correct token address.\n2. The owner must approve the contract to spend tokens on their behalf before tokens can be released.\n3. All time-related parameters (startTime, cliffDuration, vestingDuration) are in seconds.\n\nTo deploy and interact with the contract:\n1. Deploy the contract.\n2. Call `setToken` to set the correct token address.\n3. Use `addBeneficiary` to add vesting schedules for beneficiaries.\n4. Beneficiaries can call `releaseVestedTokens` to claim their vested tokens.\n5. Anyone can check the vested amount for a beneficiary using `calculateVestedAmount`.\n\nRemember to ensure that the owner's wallet has sufficient token balance and has approved the contract to spend tokens before attempting to release vested tokens.\n",
+        "metadata": {
+            "tool_call_id": "call_5CojBSbnH9l0naSZ1l4kKDNc"
+        }
     }
 ]
