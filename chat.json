@@ -506,5 +506,20 @@
         "metadata": {
             "component_id": "Footer1734438674"
         }
+    },
+    {
+        "id": "71331b46-179d-4f4e-8d47-65f85fbc40f8",
+        "timestamp": "2024-12-18T10:13:23.834513Z",
+        "role": "tool_call",
+        "source": "smart_contract_assistant",
+        "content": null,
+        "metadata": {
+            "id": "call_5CojBSbnH9l0naSZ1l4kKDNc",
+            "function": {
+                "arguments": "{\"contract_id\":\"VestingDistributor\",\"description\":\"Generate a smart contract that distributes a specific token from the owner's wallet to specified addresses with a vesting schedule. The contract should handle distribution and vesting logic.\",\"acknowledgement_message\":\"Okay, I'm generating the vesting distribution smart contract...\"}",
+                "name": "WriteOrEditSmartContract"
+            },
+            "type": "function"
+        }
     }
 ]
