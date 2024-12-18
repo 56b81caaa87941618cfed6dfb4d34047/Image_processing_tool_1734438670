@@ -108,9 +108,9 @@ const VestingForm: React.FC = () => {
             onChange={(e) => setVestingDuration(e.target.value)}
             className="w-full p-2 border rounded"
             required
-          />
         </div>
-        </div>
+        <div>
+          <label className="block mb-1">Allocation (total tokens):</label>
           <label className="block mb-1">Allocation (total tokens):</label>
           <input
             type="number"
@@ -132,8 +132,6 @@ const VestingForm: React.FC = () => {
         </div>
         <button type="submit" className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
           Add Beneficiary
-        </button>
-      </form>
         </button>
       </form>
       {status && <p className="mt-4 text-green-600">{status}</p>}
