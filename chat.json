@@ -251,5 +251,20 @@
         "source": "web_client",
         "content": "yes",
         "metadata": {}
+    },
+    {
+        "id": "ca1bf804-6ef4-462f-a940-edcb6802738e",
+        "timestamp": "2024-12-18T10:03:53.848880Z",
+        "role": "tool_call",
+        "source": "smart_contract_assistant",
+        "content": null,
+        "metadata": {
+            "id": "call_Cj609WPJwk0LEDIhYgQJerK1",
+            "function": {
+                "arguments": "{\"contract_id\": \"MintingToken\", \"frontend_description\": \"Frontend component to mint tokens with specified supply and withdraw them to a specified wallet.\", \"acknowledgement_message\": \"Okay, I'm deploying the minting token smart contract...\"}",
+                "name": "DeployAndGenerateFrontend"
+            },
+            "type": "function"
+        }
     }
 ]
