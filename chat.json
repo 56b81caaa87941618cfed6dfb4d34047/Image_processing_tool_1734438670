@@ -145,5 +145,13 @@
         "source": "smart_contract_assistant",
         "content": "It seems I have already generated a staking smart contract for your project. Would you like to deploy it now?",
         "metadata": {}
+    },
+    {
+        "id": "8c42ef88-b43e-4ead-9e2a-05e4d1cb845b",
+        "timestamp": "2024-12-18T10:01:30.588689Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "modify the staking sc to only accept eth",
+        "metadata": {}
     }
 ]
