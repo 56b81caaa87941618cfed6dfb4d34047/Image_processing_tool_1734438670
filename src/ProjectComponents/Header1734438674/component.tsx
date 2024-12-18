@@ -3,12 +3,11 @@ import React from 'react';
 import * as ethers from 'ethers';
 
 const VestingForm: React.FC = () => {
-  const [address, setAddress] = React.useState('');
+  const [beneficiaryAddress, setBeneficiaryAddress] = React.useState('');
   const [startTime, setStartTime] = React.useState('');
   const [cliffDuration, setCliffDuration] = React.useState('');
   const [vestingDuration, setVestingDuration] = React.useState('');
   const [allocation, setAllocation] = React.useState('');
-  const [tokenAddress, setTokenAddress] = React.useState('');
   const [status, setStatus] = React.useState('');
   const [error, setError] = React.useState('');
 
@@ -50,12 +49,16 @@ const VestingForm: React.FC = () => {
       const contract = new ethers.Contract(contractAddress, contractABI, signer);
 
       const startTimeUnix = Math.floor(new Date(startTime).getTime() / 1000);
+      const totalAmount = ethers.utils.parseUnits(allocation, 18); // Assuming 18 decimals for the token
+      const cliffDurationSeconds = ethers.BigNumber.from(cliffDuration).mul(86400); // convert days to seconds
+      const vestingDurationSeconds = ethers.BigNumber.from(vestingDuration).mul(86400); // convert days to seconds
+
       const tx = await contract.addBeneficiary(
-        address,
-        ethers.BigNumber.from(allocation),
+        beneficiaryAddress,
+        totalAmount,
         startTimeUnix,
-        parseInt(cliffDuration) * 86400, // convert days to seconds
-        parseInt(vestingDuration) * 86400 // convert days to seconds
+        cliffDurationSeconds,
+        vestingDurationSeconds
       );
 
       setStatus('Transaction sent. Waiting for confirmation...');
@@ -74,8 +77,8 @@ const VestingForm: React.FC = () => {
           <label className="block mb-1">Beneficiary Address:</label>
           <input
             type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            value={beneficiaryAddress}
+            onChange={(e) => setBeneficiaryAddress(e.target.value)}
             className="w-full p-2 border rounded"
             required
           />
@@ -108,24 +111,14 @@ const VestingForm: React.FC = () => {
             onChange={(e) => setVestingDuration(e.target.value)}
             className="w-full p-2 border rounded"
             required
+          />
         </div>
         <div>
-          <label className="block mb-1">Allocation (total tokens):</label>
           <label className="block mb-1">Allocation (total tokens):</label>
           <input
             type="number"
             value={allocation}
             onChange={(e) => setAllocation(e.target.value)}
-            className="w-full p-2 border rounded"
-            required
-          />
-        </div>
-        <div>
-          <label className="block mb-1">Token Address:</label>
-          <input
-            type="text"
-            value={tokenAddress}
-            onChange={(e) => setTokenAddress(e.target.value)}
             className="w-full p-2 border rounded"
             required
           />
