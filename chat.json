@@ -1108,5 +1108,13 @@
         "metadata": {
             "tool_call_id": "call_2oSnvt7nv8GOdJRt3V5mJdwl"
         }
+    },
+    {
+        "id": "e21a9a3f-7188-4b03-af03-e693a1da9442",
+        "timestamp": "2024-12-18T11:06:41.577642Z",
+        "role": "assistant",
+        "source": "base_assistant",
+        "content": "I have updated the form to specify the allocation as total tokens in the vesting schedule component. You can now enter the allocation in total tokens. Is there anything else you need assistance with?",
+        "metadata": {}
     }
 ]
