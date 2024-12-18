@@ -1065,5 +1065,15 @@
         "source": "base_assistant",
         "content": "To resolve the issue with the MintingToken smart contract not working with the token symbol and name you specified, I'll check and ensure the contract and frontend are properly integrated. Let's investigate and fix it.",
         "metadata": {}
+    },
+    {
+        "id": "c4fb0923-2d34-4e24-9d41-1f29cf6c3b8f",
+        "timestamp": "2024-12-18T11:06:29.620177Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "for the \"I want the sc frontend for the vesting schedule to be a forms with the address to send, when start, cliff vesting time, allocion and token address to send\" the allocaiont should be in total tokens",
+        "metadata": {
+            "component_id": "Header1734438674"
+        }
     }
 ]
