@@ -88,5 +88,20 @@
         "source": "web_client",
         "content": "generate a token miniting sc that I can select the supply and then withdraw them to my wallet ( and the token name)",
         "metadata": {}
+    },
+    {
+        "id": "5371a301-9129-493b-bba1-6881b31cf5d5",
+        "timestamp": "2024-12-18T08:00:03.331602Z",
+        "role": "tool_call",
+        "source": "smart_contract_assistant",
+        "content": null,
+        "metadata": {
+            "id": "call_Bl4HH5UuAWkqbIpVfOUD5mZM",
+            "function": {
+                "arguments": "{\"contract_id\":\"MintingToken\",\"description\":\"A token minting smart contract that allows the owner to set the token supply and withdraw tokens to a specified wallet. It includes functionality to set the token name.\",\"acknowledgement_message\":\"Okay, I'm generating the minting token smart contract...\"}",
+                "name": "WriteSmartContract"
+            },
+            "type": "function"
+        }
     }
 ]
