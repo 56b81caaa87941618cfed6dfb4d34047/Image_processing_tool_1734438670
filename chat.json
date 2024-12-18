@@ -853,5 +853,15 @@
         "source": "smart_contract_assistant",
         "content": "I have updated the MintingToken smart contract to ensure that the token name and symbol are correctly set and updated as specified through the frontend. Would you like to deploy this updated contract now?",
         "metadata": {}
+    },
+    {
+        "id": "c44e42f0-f03e-4568-9f2e-a60f85c0b59d",
+        "timestamp": "2024-12-18T10:36:57.550973Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "I will but in the meantime, the SC for vesting, does it allow you to specify the token address you want to distribute? if not, modify it, otherwise, update the frontend",
+        "metadata": {
+            "component_id": "Footer1734438674"
+        }
     }
 ]
