@@ -292,5 +292,15 @@
         "source": "smart_contract_assistant",
         "content": "The minting token smart contract has been successfully deployed. You can now mint tokens with the specified supply and withdraw them. Would you like to deploy the staking contract now?",
         "metadata": {}
+    },
+    {
+        "id": "441ae215-b58a-43a4-80a9-56bed1793212",
+        "timestamp": "2024-12-18T10:04:47.722980Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "I want you to genrate a frontend for it",
+        "metadata": {
+            "component_id": "Footer1734438674"
+        }
     }
 ]
