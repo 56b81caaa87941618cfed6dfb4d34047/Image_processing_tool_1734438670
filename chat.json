@@ -80,5 +80,13 @@
         "source": "smart_contract_assistant",
         "content": "I have successfully generated the staking smart contract. Would you like to deploy it now?",
         "metadata": {}
+    },
+    {
+        "id": "abd5418f-cdc7-468b-8855-2adee4eeb61e",
+        "timestamp": "2024-12-18T07:59:55.358061Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "generate a token miniting sc that I can select the supply and then withdraw them to my wallet ( and the token name)",
+        "metadata": {}
     }
 ]
