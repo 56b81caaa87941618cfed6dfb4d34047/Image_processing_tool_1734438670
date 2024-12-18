@@ -6,22 +6,37 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract MintingToken is ERC20, Ownable {
-    string private _name;
-    string private _symbol;
+    string private _customName;
+    string private _customSymbol;
 
     event TokenNameSet(string newName);
+    event TokenSymbolSet(string newSymbol);
     event TokensMinted(address to, uint256 amount);
     event TokensWithdrawn(address to, uint256 amount);
 
-    constructor() ERC20("MintingToken", "MTK") Ownable() {
-        _name = "MintingToken";
-        _symbol = "MTK";
+    constructor() ERC20("InitialName", "INS") Ownable() {
+        _customName = "InitialName";
+        _customSymbol = "INS";
     }
 
     function setTokenName(string memory newName) external onlyOwner {
         require(bytes(newName).length > 0, "Name cannot be empty");
-        _name = newName;
+        _customName = newName;
         emit TokenNameSet(newName);
+    }
+
+    function setTokenSymbol(string memory newSymbol) external onlyOwner {
+        require(bytes(newSymbol).length > 0, "Symbol cannot be empty");
+        _customSymbol = newSymbol;
+        emit TokenSymbolSet(newSymbol);
+    }
+
+    function name() public view virtual override returns (string memory) {
+        return _customName;
+    }
+
+    function symbol() public view virtual override returns (string memory) {
+        return _customSymbol;
     }
 
     function mintTokens(address to, uint256 amount) external onlyOwner {
@@ -35,13 +50,5 @@ contract MintingToken is ERC20, Ownable {
         require(amount <= balanceOf(msg.sender), "Insufficient balance");
         _transfer(msg.sender, to, amount);
         emit TokensWithdrawn(to, amount);
-    }
-
-    function name() public view virtual override returns (string memory) {
-        return _name;
-    }
-
-    function symbol() public view virtual override returns (string memory) {
-        return _symbol;
     }
 }
