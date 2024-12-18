@@ -8,6 +8,8 @@ const MintingTokenManager: React.FC = () => {
   const [tokenSymbol, setTokenSymbol] = React.useState<string>('');
   const [currentName, setCurrentName] = React.useState<string>('');
   const [currentSymbol, setCurrentSymbol] = React.useState<string>('');
+  const [mintAmount, setMintAmount] = React.useState<string>('');
+  const [mintAddress, setMintAddress] = React.useState<string>('');
   const [status, setStatus] = React.useState<string>('');
   const [contract, setContract] = React.useState<ethers.Contract | null>(null);
 
@@ -18,7 +20,8 @@ const MintingTokenManager: React.FC = () => {
     "function setTokenName(string memory newName) external",
     "function setTokenSymbol(string memory newSymbol) external",
     "function name() public view returns (string memory)",
-    "function symbol() public view returns (string memory)"
+    "function symbol() public view returns (string memory)",
+    "function mintTokens(address to, uint256 amount) external"
   ];
 
   const connectWallet = async () => {
@@ -122,6 +125,30 @@ const MintingTokenManager: React.FC = () => {
     }
   };
 
+  const mintTokens = async () => {
+    if (!contract) {
+      setStatus('Please connect your wallet first.');
+      return;
+    }
+    if (!ethers.utils.isAddress(mintAddress)) {
+      setStatus('Please enter a valid Ethereum address.');
+      return;
+    }
+    if (isNaN(Number(mintAmount)) || Number(mintAmount) <= 0) {
+      setStatus('Please enter a valid positive number for the mint amount.');
+      return;
+    }
+    try {
+      const tx = await contract.mintTokens(mintAddress, ethers.utils.parseEther(mintAmount));
+      setStatus('Minting tokens. Waiting for confirmation...');
+      await tx.wait();
+      setStatus(`Successfully minted ${mintAmount} tokens to ${mintAddress}`);
+    } catch (error) {
+      console.error('Failed to mint tokens:', error);
+      setStatus('Failed to mint tokens. Make sure you are the contract owner and have entered valid details.');
+    }
+  };
+
   return (
     <div className="bg-gray-100 min-h-screen p-5">
       <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
@@ -169,6 +196,30 @@ const MintingTokenManager: React.FC = () => {
             className="w-full bg-purple-500 text-white py-2 px-4 rounded-lg hover:bg-purple-600 transition duration-300"
           >
             Set Token Symbol
+          </button>
+        </div>
+
+        <div className="mb-4">
+          <h2 className="text-xl font-semibold mb-2">Mint Tokens</h2>
+          <input
+            type="text"
+            value={mintAddress}
+            onChange={(e) => setMintAddress(e.target.value)}
+            className="w-full p-2 border rounded-lg mb-2"
+            placeholder="Address to mint to"
+          />
+          <input
+            type="number"
+            value={mintAmount}
+            onChange={(e) => setMintAmount(e.target.value)}
+            className="w-full p-2 border rounded-lg mb-2"
+            placeholder="Amount to mint"
+          />
+          <button
+            onClick={mintTokens}
+            className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition duration-300"
+          >
+            Mint Tokens
           </button>
         </div>
 
