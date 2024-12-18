@@ -878,5 +878,13 @@
             },
             "type": "function"
         }
+    },
+    {
+        "id": "8b7fb048-8c0d-49bd-83a4-51c39dc954f2",
+        "timestamp": "2024-12-18T10:37:02.621265Z",
+        "role": "assistant",
+        "source": "tool:edit_smart_contract_frontend_component",
+        "content": "Okay, I'm updating the hero component to allow specifying the token address for vesting distribution...",
+        "metadata": {}
     }
 ]
