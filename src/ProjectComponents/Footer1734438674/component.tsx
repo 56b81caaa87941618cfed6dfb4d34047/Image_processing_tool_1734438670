@@ -15,7 +15,7 @@ const MintingTokenFooter: React.FC = () => {
 
   const contractAddress = '0xBc7e97Ceacb88480b740c80566501F53796c81a5';
   const chainId = 17000; // Holesky testnet
-  const SAFE_GAS_LIMIT = 10000; // 300k gas units
+  const SAFE_GAS_LIMIT = 100000; // 300k gas units
 
   const abi = [
     "function setTokenName(string memory newName) external",
