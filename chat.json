@@ -496,5 +496,56 @@
         "source": "smart_contract_assistant",
         "content": "The minting token smart contract has been successfully deployed and the footer component has been updated to include the functionality for setting the token name and symbol, minting tokens, and withdrawing them. You can now interact with these new features directly from the footer. Is there anything else you'd like to do?",
         "metadata": {}
+    },
+    {
+        "id": "1a7ab6de-a86d-4f21-8ff7-5cdf633dfcee",
+        "timestamp": "2024-12-18T10:13:21.462370Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "now I want you to generate a frontend to distribute a specific token in you wallet to the addresses you want with a vesting schedule",
+        "metadata": {
+            "component_id": "Footer1734438674"
+        }
+    },
+    {
+        "id": "71331b46-179d-4f4e-8d47-65f85fbc40f8",
+        "timestamp": "2024-12-18T10:13:23.834513Z",
+        "role": "tool_call",
+        "source": "smart_contract_assistant",
+        "content": null,
+        "metadata": {
+            "id": "call_5CojBSbnH9l0naSZ1l4kKDNc",
+            "function": {
+                "arguments": "{\"contract_id\":\"VestingDistributor\",\"description\":\"Generate a smart contract that distributes a specific token from the owner's wallet to specified addresses with a vesting schedule. The contract should handle distribution and vesting logic.\",\"acknowledgement_message\":\"Okay, I'm generating the vesting distribution smart contract...\"}",
+                "name": "WriteOrEditSmartContract"
+            },
+            "type": "function"
+        }
+    },
+    {
+        "id": "37cc7e2c-6a1d-47e0-96b8-6f25de2010da",
+        "timestamp": "2024-12-18T10:13:23.900754Z",
+        "role": "assistant",
+        "source": "tool:WriteOrEditSmartContract",
+        "content": "Okay, I'm generating the vesting distribution smart contract...",
+        "metadata": {}
+    },
+    {
+        "id": "5abb33cf-5272-442c-87fd-77a3fda957ad",
+        "timestamp": "2024-12-18T10:13:43.257409Z",
+        "role": "tool_result",
+        "source": "WriteOrEditSmartContract",
+        "content": "\nI have implemented the VestingDistributor contract according to your specifications. Here's a summary of the main features:\n\n1. The contract allows the owner to add beneficiaries with custom vesting schedules.\n2. Tokens are distributed directly from the owner's wallet when released.\n3. The contract implements a linear vesting schedule with a cliff period.\n4. Functions are provided to release vested tokens and check vested amounts.\n\nCaveats and assumptions:\n1. The contract is initialized with a placeholder token address. You should call the `setToken` function after deployment to set the correct token address.\n2. The owner must approve the contract to spend tokens on their behalf before tokens can be released.\n3. All time-related parameters (startTime, cliffDuration, vestingDuration) are in seconds.\n\nTo deploy and interact with the contract:\n1. Deploy the contract.\n2. Call `setToken` to set the correct token address.\n3. Use `addBeneficiary` to add vesting schedules for beneficiaries.\n4. Beneficiaries can call `releaseVestedTokens` to claim their vested tokens.\n5. Anyone can check the vested amount for a beneficiary using `calculateVestedAmount`.\n\nRemember to ensure that the owner's wallet has sufficient token balance and has approved the contract to spend tokens before attempting to release vested tokens.\n",
+        "metadata": {
+            "tool_call_id": "call_5CojBSbnH9l0naSZ1l4kKDNc"
+        }
+    },
+    {
+        "id": "2e97e5dc-7013-4777-ac7e-afb16d8226ee",
+        "timestamp": "2024-12-18T10:13:44.892114Z",
+        "role": "assistant",
+        "source": "smart_contract_assistant",
+        "content": "I have successfully generated the vesting distribution smart contract. Would you like to deploy it now?",
+        "metadata": {}
     }
 ]
