@@ -361,5 +361,15 @@
         "source": "smart_contract_assistant",
         "content": "I have successfully updated the footer component to interact with the minting token smart contract. You can now mint tokens and withdraw them directly from the footer. Would you like to do anything else?",
         "metadata": {}
+    },
+    {
+        "id": "edd544fc-db10-4998-bb1e-fdc68fb3da34",
+        "timestamp": "2024-12-18T10:09:19.411061Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "I want to change the sc MintingToken , in the frontend I should be able to specify the name and suymbol",
+        "metadata": {
+            "component_id": "Footer1734438674"
+        }
     }
 ]
