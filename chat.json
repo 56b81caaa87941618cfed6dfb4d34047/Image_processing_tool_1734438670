@@ -700,5 +700,15 @@
         "source": "smart_contract_assistant",
         "content": "The MintingToken smart contract has been verified and updated to allow setting and checking the token name and symbol. I have also updated the hero component to interact with it. You can now set and check the token name and symbol directly from the hero component. Is there anything else you need assistance with?",
         "metadata": {}
+    },
+    {
+        "id": "50963dee-c824-4069-8e46-d45d56f0a422",
+        "timestamp": "2024-12-18T10:24:45.054113Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "ok, in the meantime, put on the Hero the frontend for hte vesting sc",
+        "metadata": {
+            "component_id": "Hero1734438674"
+        }
     }
 ]
