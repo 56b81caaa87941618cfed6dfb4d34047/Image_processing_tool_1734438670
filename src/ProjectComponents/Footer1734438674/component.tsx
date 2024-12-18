@@ -92,7 +92,7 @@ const VestingDistributorManager: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen p-5">
+    <div className="bg-gray-100 min-h-screen p-5" style={{ backgroundImage: `url('https://raw.githubusercontent.com/56b81caaa87941618cfed6dfb4d34047/Image_processing_tool_1734438670/${window.MI_PROJECT_GIT_REF || 'main'}/src/assets/images/e88973d29db04f13bb228da075a1447c.jpeg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
         <h1 className="text-2xl font-bold mb-4">Vesting Distributor Manager</h1>
         
