@@ -1047,5 +1047,23 @@
         "source": "base_assistant",
         "content": "I have successfully updated the component to include a form for the vesting schedule. The form allows users to specify the address to send, start time, cliff vesting time, allocation, and token address for the vesting schedule. Is there anything else you need assistance with?",
         "metadata": {}
+    },
+    {
+        "id": "f41f7b59-d631-4c9e-a363-65421aaa32a4",
+        "timestamp": "2024-12-18T11:05:03.939605Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "now the mintingtoken sc is not working with the token symbol and name that I send them",
+        "metadata": {
+            "component_id": "Footer1734438674"
+        }
+    },
+    {
+        "id": "a8529d48-9bbe-4f8d-b896-7ca01d5481fb",
+        "timestamp": "2024-12-18T11:05:06.604942Z",
+        "role": "assistant",
+        "source": "base_assistant",
+        "content": "To resolve the issue with the MintingToken smart contract not working with the token symbol and name you specified, I'll check and ensure the contract and frontend are properly integrated. Let's investigate and fix it.",
+        "metadata": {}
     }
 ]
