@@ -6,5 +6,13 @@
         "source": "base_assistant",
         "content": "Welcome to your new project! I can help you edit it however you want. What would you like to do?",
         "metadata": {}
+    },
+    {
+        "id": "f6d42a2f-5b58-4b33-8dec-222b3191d24e",
+        "timestamp": "2024-12-18T07:50:54.680093Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "generate a sc for staking",
+        "metadata": {}
     }
 ]
