@@ -496,5 +496,15 @@
         "source": "smart_contract_assistant",
         "content": "The minting token smart contract has been successfully deployed and the footer component has been updated to include the functionality for setting the token name and symbol, minting tokens, and withdrawing them. You can now interact with these new features directly from the footer. Is there anything else you'd like to do?",
         "metadata": {}
+    },
+    {
+        "id": "1a7ab6de-a86d-4f21-8ff7-5cdf633dfcee",
+        "timestamp": "2024-12-18T10:13:21.462370Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "now I want you to generate a frontend to distribute a specific token in you wallet to the addresses you want with a vesting schedule",
+        "metadata": {
+            "component_id": "Footer1734438674"
+        }
     }
 ]
