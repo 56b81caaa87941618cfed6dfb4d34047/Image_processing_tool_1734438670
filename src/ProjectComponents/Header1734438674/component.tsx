@@ -52,7 +52,7 @@ const VestingForm: React.FC = () => {
       const startTimeUnix = Math.floor(new Date(startTime).getTime() / 1000);
       const tx = await contract.addBeneficiary(
         address,
-        ethers.utils.parseEther(allocation),
+        ethers.BigNumber.from(allocation),
         startTimeUnix,
         parseInt(cliffDuration) * 86400, // convert days to seconds
         parseInt(vestingDuration) * 86400 // convert days to seconds
@@ -111,9 +111,10 @@ const VestingForm: React.FC = () => {
           />
         </div>
         <div>
-          <label className="block mb-1">Allocation (in Ether):</label>
+        <div>
+          <label className="block mb-1">Allocation (total tokens):</label>
           <input
-            type="text"
+            type="number"
             value={allocation}
             onChange={(e) => setAllocation(e.target.value)}
             className="w-full p-2 border rounded"
