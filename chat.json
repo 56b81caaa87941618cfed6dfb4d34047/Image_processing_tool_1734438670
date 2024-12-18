@@ -802,5 +802,15 @@
         "source": "smart_contract_assistant",
         "content": "The footer component has been successfully updated to include the capability to choose the supply for minting tokens, in addition to setting the token name and symbol. You can now fully manage these functionalities directly from the footer. Is there anything else you need assistance with?",
         "metadata": {}
+    },
+    {
+        "id": "4ba84709-3dc4-44f4-9ba3-800c748b3cc3",
+        "timestamp": "2024-12-18T10:30:22.689468Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "the name of the minted token is TokenTracker ERC-20: InitialName (INS) even though I changed it, it is not working as expected the MintingToken.sol",
+        "metadata": {
+            "component_id": "Footer1734438674"
+        }
     }
 ]
