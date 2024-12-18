@@ -996,5 +996,15 @@
         "source": "base_assistant",
         "content": "To change the background image of the entire mini app, you'll need to upload the \"freedom\" image to the app's assets and then apply it as the background for the whole app. Since you can upload images, you can proceed from there.",
         "metadata": {}
+    },
+    {
+        "id": "407691b2-1a54-4761-8a58-0c52207b50bd",
+        "timestamp": "2024-12-18T11:03:38.320221Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "I want the sc frontend for the vesting schedule to be a forms with the address to send, when start, cliff vesting time, allocion and token address to send",
+        "metadata": {
+            "component_id": "Header1734438674"
+        }
     }
 ]
