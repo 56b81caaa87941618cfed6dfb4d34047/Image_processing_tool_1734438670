@@ -896,5 +896,13 @@
         "metadata": {
             "tool_call_id": "call_qIjPcjsbVd8G2y4zgNruEguU"
         }
+    },
+    {
+        "id": "d4ac24c6-57b7-41cf-9842-a4d5603b1de7",
+        "timestamp": "2024-12-18T10:37:31.214464Z",
+        "role": "assistant",
+        "source": "smart_contract_assistant",
+        "content": "The vesting distribution smart contract already allows specifying the token address you want to distribute. I have updated the frontend component to reflect this functionality. You can now specify the token address for vesting distribution directly from the frontend. Is there anything else you need assistance with?",
+        "metadata": {}
     }
 ]
