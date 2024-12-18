@@ -153,5 +153,20 @@
         "source": "web_client",
         "content": "modify the staking sc to only accept eth",
         "metadata": {}
+    },
+    {
+        "id": "1004e992-cadb-40d0-978d-f4d3896b0799",
+        "timestamp": "2024-12-18T10:01:32.691556Z",
+        "role": "tool_call",
+        "source": "smart_contract_assistant",
+        "content": null,
+        "metadata": {
+            "id": "call_liabIskgTCGH6cPOvhIqX1Sm",
+            "function": {
+                "arguments": "{\"contract_id\":\"StakingContract\",\"description\":\"Update the staking smart contract to only accept ETH for staking and reward purposes.\",\"acknowledgement_message\":\"Okay, I'm updating the staking smart contract...\"}",
+                "name": "WriteOrEditSmartContract"
+            },
+            "type": "function"
+        }
     }
 ]
