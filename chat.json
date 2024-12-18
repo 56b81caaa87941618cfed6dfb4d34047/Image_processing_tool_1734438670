@@ -310,5 +310,15 @@
         "source": "smart_contract_assistant",
         "content": "The smart contract deployment has already generated a frontend for the minting token. Would you like to modify an existing frontend component to interact with this contract?",
         "metadata": {}
+    },
+    {
+        "id": "3e2d879b-62df-4f18-8949-89570b7be006",
+        "timestamp": "2024-12-18T10:05:41.766078Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "I want a frontend in the footer",
+        "metadata": {
+            "component_id": "Footer1734438674"
+        }
     }
 ]
