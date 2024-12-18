@@ -751,5 +751,15 @@
         "source": "smart_contract_assistant",
         "content": "The hero component has been successfully updated to interact with the vesting distribution smart contract. You can now manage vesting schedules and distribute tokens directly from the hero component. Is there anything else you need assistance with?",
         "metadata": {}
+    },
+    {
+        "id": "295109e0-624b-4eec-a93f-a9eeedccc095",
+        "timestamp": "2024-12-18T10:26:08.591714Z",
+        "role": "user",
+        "source": "web_client",
+        "content": "and on the footer, the code should also have the capability of choosing the supply that you want, in addition to select the name",
+        "metadata": {
+            "component_id": "Footer1734438674"
+        }
     }
 ]
