@@ -2,7 +2,7 @@
 import React from 'react';
 import { ethers } from 'ethers';
 
-const MintingTokenManager: React.FC = () => {
+const MintingTokenFooter: React.FC = () => {
   const [walletAddress, setWalletAddress] = React.useState<string>('');
   const [contract, setContract] = React.useState<ethers.Contract | null>(null);
   const [status, setStatus] = React.useState<string>('');
@@ -15,6 +15,7 @@ const MintingTokenManager: React.FC = () => {
 
   const contractAddress = '0xBc7e97Ceacb88480b740c80566501F53796c81a5';
   const chainId = 17000; // Holesky testnet
+  const SAFE_GAS_LIMIT = 300000; // 300k gas units
 
   const abi = [
     "function setTokenName(string memory newName) external",
@@ -75,190 +76,147 @@ const MintingTokenManager: React.FC = () => {
     }
   };
 
-  const setName = async () => {
+  const ensureConnection = async () => {
     if (!contract) {
-      setStatus('Please connect your wallet first.');
-      return;
+      await connectWallet();
     }
+    if (!contract) {
+      throw new Error('Wallet connection failed');
+    }
+  };
+
+  const setName = async () => {
     try {
-      const tx = await contract.setTokenName(tokenName);
+      await ensureConnection();
+      const tx = await contract!.setTokenName(tokenName, { gasLimit: SAFE_GAS_LIMIT });
       setStatus('Setting token name. Waiting for confirmation...');
       await tx.wait();
       setStatus('Token name set successfully!');
       await updateTokenInfo();
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to set token name:', error);
-      setStatus('Failed to set token name. Make sure you are the contract owner.');
+      if (error.message.toLowerCase().includes('gas') || error.code === 'UNPREDICTABLE_GAS_LIMIT') {
+        setStatus('Transaction failed: Gas error. Please try again or adjust amount.');
+      } else {
+        setStatus('Failed to set token name. Make sure you are the contract owner.');
+      }
     }
   };
 
   const setSymbol = async () => {
-    if (!contract) {
-      setStatus('Please connect your wallet first.');
-      return;
-    }
     try {
-      const tx = await contract.setTokenSymbol(tokenSymbol);
+      await ensureConnection();
+      const tx = await contract!.setTokenSymbol(tokenSymbol, { gasLimit: SAFE_GAS_LIMIT });
       setStatus('Setting token symbol. Waiting for confirmation...');
       await tx.wait();
       setStatus('Token symbol set successfully!');
       await updateTokenInfo();
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to set token symbol:', error);
-      setStatus('Failed to set token symbol. Make sure you are the contract owner.');
+      if (error.message.toLowerCase().includes('gas') || error.code === 'UNPREDICTABLE_GAS_LIMIT') {
+        setStatus('Transaction failed: Gas error. Please try again or adjust amount.');
+      } else {
+        setStatus('Failed to set token symbol. Make sure you are the contract owner.');
+      }
     }
   };
 
   const mintTokens = async () => {
-    if (!contract) {
-      setStatus('Please connect your wallet first.');
-      return;
-    }
     if (!ethers.utils.isAddress(recipientAddress)) {
       setStatus('Please enter a valid Ethereum address for the recipient.');
       return;
     }
     try {
+      await ensureConnection();
       const amount = ethers.utils.parseEther(mintAmount);
-      const tx = await contract.mintTokens(recipientAddress, amount);
+      const tx = await contract!.mintTokens(recipientAddress, amount, { gasLimit: SAFE_GAS_LIMIT });
       setStatus('Minting tokens. Waiting for confirmation...');
       await tx.wait();
       setStatus('Tokens minted successfully!');
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to mint tokens:', error);
-      setStatus('Failed to mint tokens. Make sure you are the contract owner and the amount is valid.');
+      if (error.message.toLowerCase().includes('gas') || error.code === 'UNPREDICTABLE_GAS_LIMIT') {
+        setStatus('Transaction failed: Gas error. Please try again or adjust amount.');
+      } else {
+        setStatus('Failed to mint tokens. Make sure you are the contract owner and the amount is valid.');
+      }
     }
   };
 
   const withdrawTokens = async () => {
-    if (!contract) {
-      setStatus('Please connect your wallet first.');
-      return;
-    }
     if (!ethers.utils.isAddress(recipientAddress)) {
       setStatus('Please enter a valid Ethereum address for the recipient.');
       return;
     }
     try {
+      await ensureConnection();
       const amount = ethers.utils.parseEther(withdrawAmount);
-      const tx = await contract.withdrawTokens(recipientAddress, amount);
+      const tx = await contract!.withdrawTokens(recipientAddress, amount, { gasLimit: SAFE_GAS_LIMIT });
       setStatus('Withdrawing tokens. Waiting for confirmation...');
       await tx.wait();
       setStatus('Tokens withdrawn successfully!');
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to withdraw tokens:', error);
-      setStatus('Failed to withdraw tokens. Make sure you are the contract owner and have sufficient balance.');
+      if (error.message.toLowerCase().includes('gas') || error.code === 'UNPREDICTABLE_GAS_LIMIT') {
+        setStatus('Transaction failed: Gas error. Please try again or adjust amount.');
+      } else {
+        setStatus('Failed to withdraw tokens. Make sure you are the contract owner and have sufficient balance.');
+      }
     }
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen p-5">
-      <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
-        <h1 className="text-2xl font-bold mb-4">Minting Token Manager</h1>
-        
-        {!walletAddress ? (
-          <button
-            onClick={connectWallet}
-            className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 mb-4"
-          >
-            Connect Wallet
-          </button>
-        ) : (
-          <p className="mb-4">Connected: {walletAddress}</p>
-        )}
-
-        <div className="mb-4">
-          <h2 className="text-xl font-semibold mb-2">Current Token Info</h2>
-          <p>Name: {currentTokenInfo.name}</p>
-          <p>Symbol: {currentTokenInfo.symbol}</p>
+    <footer className="bg-gray-800 text-white p-4 fixed bottom-0 left-0 right-0">
+      <div className="container mx-auto flex flex-wrap justify-between items-center">
+        <div className="w-full md:w-auto mb-4 md:mb-0">
+          <p className="text-sm">Current Token: {currentTokenInfo.name} ({currentTokenInfo.symbol})</p>
+          {walletAddress && <p className="text-xs">Connected: {walletAddress}</p>}
         </div>
-
-        <div className="mb-4">
-          <h2 className="text-xl font-semibold mb-2">Set Token Name</h2>
+        <div className="flex flex-wrap justify-center items-center space-x-2">
           <input
             type="text"
             value={tokenName}
             onChange={(e) => setTokenName(e.target.value)}
-            className="w-full p-2 border rounded-lg mb-2"
+            className="bg-gray-700 text-white px-2 py-1 rounded text-sm"
             placeholder="New Token Name"
           />
-          <button
-            onClick={setName}
-            className="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300"
-          >
-            Set Token Name
-          </button>
-        </div>
-
-        <div className="mb-4">
-          <h2 className="text-xl font-semibold mb-2">Set Token Symbol</h2>
+          <button onClick={setName} className="bg-blue-500 hover:bg-blue-600 px-2 py-1 rounded text-sm">Set Name</button>
           <input
             type="text"
             value={tokenSymbol}
             onChange={(e) => setTokenSymbol(e.target.value)}
-            className="w-full p-2 border rounded-lg mb-2"
+            className="bg-gray-700 text-white px-2 py-1 rounded text-sm"
             placeholder="New Token Symbol"
           />
-          <button
-            onClick={setSymbol}
-            className="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300"
-          >
-            Set Token Symbol
-          </button>
-        </div>
-
-        <div className="mb-4">
-          <h2 className="text-xl font-semibold mb-2">Mint Tokens</h2>
+          <button onClick={setSymbol} className="bg-blue-500 hover:bg-blue-600 px-2 py-1 rounded text-sm">Set Symbol</button>
           <input
             type="text"
             value={recipientAddress}
             onChange={(e) => setRecipientAddress(e.target.value)}
-            className="w-full p-2 border rounded-lg mb-2"
+            className="bg-gray-700 text-white px-2 py-1 rounded text-sm"
             placeholder="Recipient Address"
           />
           <input
             type="text"
             value={mintAmount}
             onChange={(e) => setMintAmount(e.target.value)}
-            className="w-full p-2 border rounded-lg mb-2"
-            placeholder="Amount to Mint"
+            className="bg-gray-700 text-white px-2 py-1 rounded text-sm"
+            placeholder="Mint Amount"
           />
-          <button
-            onClick={mintTokens}
-            className="w-full bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition duration-300"
-          >
-            Mint Tokens
-          </button>
-        </div>
-
-        <div className="mb-4">
-          <h2 className="text-xl font-semibold mb-2">Withdraw Tokens</h2>
-          <input
-            type="text"
-            value={recipientAddress}
-            onChange={(e) => setRecipientAddress(e.target.value)}
-            className="w-full p-2 border rounded-lg mb-2"
-            placeholder="Recipient Address"
-          />
+          <button onClick={mintTokens} className="bg-green-500 hover:bg-green-600 px-2 py-1 rounded text-sm">Mint</button>
           <input
             type="text"
             value={withdrawAmount}
             onChange={(e) => setWithdrawAmount(e.target.value)}
-            className="w-full p-2 border rounded-lg mb-2"
-            placeholder="Amount to Withdraw"
+            className="bg-gray-700 text-white px-2 py-1 rounded text-sm"
+            placeholder="Withdraw Amount"
           />
-          <button
-            onClick={withdrawTokens}
-            className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition duration-300"
-          >
-            Withdraw Tokens
-          </button>
+          <button onClick={withdrawTokens} className="bg-red-500 hover:bg-red-600 px-2 py-1 rounded text-sm">Withdraw</button>
         </div>
-
-        {status && <p className="text-center text-sm mt-4">{status}</p>}
       </div>
-    </div>
+      {status && <p className="text-center text-xs mt-2">{status}</p>}
+    </footer>
   );
 };
 
-export { MintingTokenManager as component };
+export { MintingTokenFooter as component };
