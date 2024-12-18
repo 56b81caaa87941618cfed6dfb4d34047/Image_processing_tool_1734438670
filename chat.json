@@ -394,5 +394,15 @@
         "source": "tool:WriteOrEditSmartContract",
         "content": "Okay, I'm updating the minting token smart contract...",
         "metadata": {}
+    },
+    {
+        "id": "12e732fa-0135-489c-9327-0aa6a4f41cff",
+        "timestamp": "2024-12-18T10:10:01.339279Z",
+        "role": "tool_result",
+        "source": "WriteOrEditSmartContract",
+        "content": "\nI have updated the MintingToken smart contract to allow specifying the token name and symbol from the frontend. Here's a summary of the changes:\n\n1. Added _customName and _customSymbol state variables to store the custom token name and symbol.\n2. Updated the constructor to set initial values for _customName and _customSymbol.\n3. Implemented setTokenName and setTokenSymbol functions to update the custom name and symbol.\n4. Overridden the name() and symbol() functions to return the custom values.\n\nThe contract can now be deployed without any constructor arguments. After deployment, you can use the setTokenName and setTokenSymbol functions to update the token's name and symbol from the frontend. The mintTokens and withdrawTokens functions remain unchanged.\n\nNote that changing the token name and symbol after deployment is not a common practice and might confuse users. Make sure to communicate any changes clearly to your token holders.\n",
+        "metadata": {
+            "tool_call_id": "call_Lue7bWqt3nhmNPb0Ap6l5LW4"
+        }
     }
 ]
